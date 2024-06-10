@@ -18,6 +18,73 @@ a {
   text-decoration: none;
 }
 
+
+body.light-mode {
+  background-color: var(--extra-light);
+    color: #000;
+}
+
+
+body.light-mode .content {
+  background-color: var(--extra-light);
+  color: var(--text-dark);
+}
+
+body.light-mode .subtitle {
+  color: var(--text-light);
+}
+
+body.light-mode .title {
+  color: var(--text-dark);
+}
+
+body.light-mode .description {
+  color: var(--text-light);
+}
+
+
+
+body.dark-mode {
+    background-color: #000;
+    color: #fff;
+}
+
+
+body.dark-mode .content {
+  color: #fff;
+}
+
+body.dark-mode .subtitle {
+  color: #9ca3af;
+}
+
+body.dark-mode .title {
+  color: #fff;
+}
+
+body.dark-mode .description {
+  color: #9ca3af;
+}
+
+
+
+.hidden {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+
+
+
+.toggle-theme {
+    position: absolute;
+    top: 25px;
+    right: 15px;
+}
+
 body {
   font-family: "Poppins", sans-serif;
 }
@@ -86,9 +153,7 @@ ul li a:hover {
   color: var(--secondary-color);
 }
 
-.section {
-  background-color: var(--extra-light);
-}
+
 
 .section__container {
   min-height: 100vh;
@@ -214,4 +279,68 @@ ul li a:hover {
   .action__btns {
     margin: auto;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: -150px;
+}
+
+  .container  h1 {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.col {
+    flex: 1 1 calc(25% - 10px); /* 4 sütun düzeni */
+    min-width: 200px; /* Kolonların çok küçülmesini engellemek için */
+}
+
+.box {
+    background-color: #f8f9fa;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.box img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .col {
+        flex: 1 1 calc(50% - 10px); /* 2 sütun düzeni */
+    }
+}
+
+@media (max-width: 480px) {
+    .col {
+        flex: 1 1 100%; /* 1 sütun düzeni */
+    }
 }

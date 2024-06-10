@@ -1,55 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>Web Design Mastery | Responsive Portfolio</title>
-  </head>
-  <body>
+</head>
+<body>
     <nav>
-      <div class="nav__content">
-        <div class="logo"><a href="#">Ufuk</a></div>
-        <label for="check" class="checkbox">
-          <i class="ri-menu-line"></i>
-        </label>
-        <input type="checkbox" name="check" id="check" />
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Resume</a></li>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
+        <div class="nav__content">
+            <div class="logo"><a href="#">Ufuk</a></div>
+            <label for="check" class="checkbox">
+                <i class="ri-menu-line"></i>
+            </label>
+            <input type="checkbox" name="check" id="check">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Resume</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="toggle-theme">
+                <button id="theme-button">🌙</button>
+            </div>
+        </div>
     </nav>
     <section class="section">
-      <div class="section__container">
-        <div class="content">
-          <p class="subtitle">HELLO</p>
-          <h1 class="title">
-            I'm <span>Ufuk<br />a</span> Web Developer
-          </h1>
-          <p class="description">
-            Welcome to my web developer portfolio! I'm Ufuk, a skilled and
-            creative web developer with a passion for creating beautiful,
-            responsive, and user-friendly websites. I've worked on a variety of
-            web projects, ranging from personal blogs to e-commerce platforms.
-          </p>
-          <div class="action__btns">
-            <button class="hire__me">Hire Me</button>
-            <button class="portfolio">Portfolio</button>
-          </div>
+        <div class="section__container">
+            <div class="content">
+                <p class="subtitle">HELLO</p>
+                <h1 class="title">
+                    I'm <span>Ufuk<br />a</span> Web Developer
+                </h1>
+                <p class="description">
+                    Welcome to my web developer portfolio! I'm Ufuk, a skilled and creative web developer with a passion for creating beautiful, responsive, and user-friendly websites. I've worked on a variety of web projects, ranging from personal blogs to e-commerce platforms.
+                </p>
+                <div class="action__btns">
+                    <button class="hire__me">Hire Me</button>
+                    <button class="portfolio" id="openPortfolio">Portfolio</button>
+                </div>
+            </div>
+            <div class="image">
+                <img src="pexels-markusspiske-4439901.jpg" alt="">
+            </div>
         </div>
-        <div class="image">
-          <img src="pexels-markusspiske-4439901.jpg" alt="" />
+
+        <div class="container hidden" id="portfolioSection">
+            <h1>My Portfolio</h1>
+            <div class="row">
+                <div class="col">
+                    <div class="box">
+                        <img src="pexels-markusspiske-4439901.jpg" alt="Project 1">
+                        <p>Project 1</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <img src="pexels-markusspiske-4439901.jpg" alt="Project 2">
+                        <p>Project 2</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <img src="pexels-markusspiske-4439901.jpg" alt="Project 3">
+                        <p>Project 3</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <img src="pexels-markusspiske-4439901.jpg" alt="Project 4">
+                        <p>Project 4</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-  </body>
+
+     <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const themeButton = document.getElementById('theme-button');
+        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+        if (currentTheme) {
+            document.body.classList.add(currentTheme);
+
+            if (currentTheme === 'dark-mode') {
+                themeButton.textContent = '☀️';
+            }
+        }
+
+        themeButton.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            document.body.classList.toggle('light-mode');
+
+            let theme = 'light-mode';
+            if (document.body.classList.contains('dark-mode')) {
+                theme = 'dark-mode';
+                themeButton.textContent = '☀️';
+            } else {
+                themeButton.textContent = '🌙';
+            }
+            localStorage.setItem('theme', theme);
+        });
+
+        const checkbox = document.getElementById('check');
+        const navContent = document.querySelector('.nav__content ul');
+
+        checkbox.addEventListener('change', function () {
+            if (checkbox.checked) {
+                navContent.style.display = 'block';
+            } else {
+                navContent.style.display = 'none';
+            }
+        });
+
+        if (window.innerWidth <= 768) {
+            navContent.style.display = 'none';
+        }
+
+        const openPortfolioButton = document.getElementById('openPortfolio');
+        const portfolioSection = document.getElementById('portfolioSection');
+
+        openPortfolioButton.addEventListener('click', function () {
+            portfolioSection.classList.remove('hidden');
+            portfolioSection.classList.add('active');
+            portfolioSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    }
+
+    window.addEventListener('load', function () {
+        const preloader = document.getElementById('preloader');
+        preloader.style.display = 'none';
+    });
+    </script>
+</body>
 </html>
